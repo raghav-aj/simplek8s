@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  # number of copies of pods
+  replicas: 1
+  selector:
+    # labels mentioned in the matchLabels section should match with template section labels.
+    matchLabels:
+      component: web
+    # template section is used to create every pod
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: raghavnayakaasaanjobs/multi-client
+          ports:
+            - containerPort: 3000

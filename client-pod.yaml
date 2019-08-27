@@ -1,0 +1,17 @@
+apiVersion: v1
+#the type of object we want to make
+kind: Pod
+metadata:
+  name: client-pod
+  labels:
+    # this label is same as the selector component name in the client-node-port service.
+    component: web
+spec:
+  containers:
+      # name of the container which is running within a pod; you can have multiple containers within a same pod
+    - name: client
+      # image to be used from Docker hub
+      image: raghavnayakaasaanjobs/multi-client
+      #image: stephengrinder/multi-client
+      ports:
+        - containerPort: 3000  # this port is exposed to outside world
